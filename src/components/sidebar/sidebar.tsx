@@ -3,21 +3,19 @@
 import Image from 'next/image';
 import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 
-// Importer l'image avec import dynamique pour Next.js
 const Sidebar = () => {
   return (
     <div className="hidden md:block h-[100vh] w-[44px] fixed top-0 flex-col items-center">
       <div className='w-[100%] flex items-center justify-center'>
-        {/* Utiliser Image de Next.js au lieu de img */}
-        <Image 
-          src="/images/line.png" 
+        {/* <Image 
+          src="../../.../../public/assets/line.png" 
           alt="Line decoration" 
           width={2} 
           height={300}
           priority
-        />
+        /> */}
       </div>
-      <div className='ml-2'> {/* les icons des contacts */}
+      <div className='ml-2'> 
         <div className='my-3'>
           <a
             href="https://www.facebook.com/profile.php?id=100013043322287&locale=fr_FR"

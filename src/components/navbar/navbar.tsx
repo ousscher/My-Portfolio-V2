@@ -5,9 +5,9 @@ import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import ThemeToggle from "./theme_toggle";
 
 const NavBar = () => {
-  const [activeItem, setActiveItem] = useState<string>("hero"); // pour la section actuelle
+  const [activeItem, setActiveItem] = useState<string>("hero");
   const navRef = useRef<HTMLDivElement>(null);
-  const [isNavbarVisible, setIsNavbarVisible] = useState<boolean>(false); // la variable pour afficher le navbar en petits devices
+  const [isNavbarVisible, setIsNavbarVisible] = useState<boolean>(false);
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -50,6 +50,9 @@ const NavBar = () => {
       <div className="fixed top-0 w-[100%] md:w-[96%] md:right-0 flex flex-row justify-between md:justify-evenly navbar text-sm items-center dark:text-foreground">
         <div className="lg:w-[30%]">
           {/* pour le logo apres */}
+          <div className="hidden md:flex items-center">
+          <ThemeToggle />
+        </div>
           <div className="w-[100%] md:hidden flex flex-row justify-around">
             <div className="mx-3">
               <a
@@ -135,7 +138,7 @@ const NavBar = () => {
         >
           Contact Me
         </button>
-        <ThemeToggle />
+        
       </div>
       <div
         className={`${

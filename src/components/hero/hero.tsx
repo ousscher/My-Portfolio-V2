@@ -1,8 +1,5 @@
 import { motion, Variants } from 'framer-motion';
-import me from '../../assets/me.png';
-// import CV from '../../assets/cv.pdf';
-import CV from '../../assets/me.png';
-
+import me from '../../../public/assets/me.png';
 import {
   staggerContainer,
   slideIn,
@@ -104,13 +101,13 @@ const Hero = () => {
         </div>
 
         <div className='mt-8 w-[60%] flex flex-col gap-4 sm:flex-row items-center justify-evenly'>
-          <a href={CV} download>
-            <button className='bg-mainColor border border-mainColor w-60 px-4 py-2 text-lg rounded hover:bg-transparent hover:text-mainColor hover:border-mainColor font-medium hover:font-semibold hover:scale-105'>
+          <a href="../../../public/assets/cv.pdf" download>
+            <button className='cursor-pointer bg-primary border-primary border w-60 px-4 py-2 text-lg rounded font-medium hover:font-semibold hover:scale-105'>
               Download CV
             </button>
           </a>
           <button
-            className='px-4 py-2 rounded border w-60 hover:bg-mainColor text-mainColor hover:text-white text-lg hover:border-mainColor hover:scale-105 font-semibold'
+            className='px-4 py-2 text-primary border-primary cursor-pointer rounded border w-60 text-lg hover:scale-105 font-semibold'
             onClick={handleScroll}
           >
             Let's Talk
