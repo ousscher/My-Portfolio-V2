@@ -1,4 +1,5 @@
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import me from '@/assets/me.png';
 import {
   staggerContainer,
@@ -9,9 +10,31 @@ import {
 } from '../../utils/motion';
 
 const Hero = () => {
+  const [displayIndex, setDisplayIndex] = useState(0);
+  const titles = [
+    "Full Stack Developer",
+    "AI & Data Science Specialist"
+  ];
+
+  // Auto switch between titles
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDisplayIndex((prevIndex) => (prevIndex + 1) % titles.length);
+    }, 4000); // Switch every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleScroll = () => {
     const section = document.getElementById("contact");
     section?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Animation variants for title text
+  const titleVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
   };
 
   return (
@@ -69,20 +92,36 @@ const Hero = () => {
           ))}
         </motion.div>
 
-        <motion.p className='hidden md:block absolute top-20 lg:top-28 left-60 text-sm lg:text-base font-[Preahvihear]'>
-          A Software Engineer who <br />
-          <span className='text-2xl lg:text-3xl'>Assesses a program</span> <br />
-          <span className='text-3xl'>
-            by its{' '}
+        <motion.div className='hidden md:block absolute top-20 lg:top-28 left-60 text-sm lg:text-base font-[Preahvihear]'>
+          <div>A passionate professional who</div>
+          <div className='text-2xl lg:text-3xl'>Transforms ideas into</div>
+          <div className='text-3xl'>
+            elegant{' '}
             <span className='text-[#7127BA] tracking-widest text-2xl lg:text-3xl'>
-              efficiency...
+              solutions...
             </span>
-          </span>{' '}
-          <br />
-          <span className='text-sm tracking-wide'>
-            Because if it doesn't run smoothly, what's the point?
-          </span>
-        </motion.p>
+          </div>
+          <div className='text-sm tracking-wide mt-1'>
+            Building bridges between technology and innovation
+          </div>
+          
+          <div className='relative h-12 mt-4 overflow-hidden'>
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={displayIndex}
+                variants={titleVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className='absolute inset-0 flex items-center'
+              >
+                <span className='text-xl font-bold text-[#7127BA]'>
+                  {titles[displayIndex]}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </motion.div>
 
       <motion.div
@@ -91,28 +130,55 @@ const Hero = () => {
         whileInView="show"
         className='w-full flex flex-col items-center'
       >
-        <div className='my-12 md:my-8 w-[60%] flex-col'>
+        <div className='my-4 md:my-8 w-[80%] flex-col'>
+          <div className='relative h-12 mb-4 md:hidden overflow-hidden'>
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={displayIndex}
+                variants={titleVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className='absolute inset-0 flex items-center justify-center'
+              >
+                <span className='text-[16px] font-bold text-[#7127BA]'>
+                  {titles[displayIndex]}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          
           <p className='font-[Preahvihear] text-xl sm:text-2xl lg:text-4xl text-center'>
-            I am a student in software engineering
+            Bringing ideas to life with code
           </p>
-          <p className='mt-4 md:mt-0 text-center text-sm'>
-            At the Higher National School of Computer Science, ESI Algiers
+          <p className='mt-4 md:mt-2 text-center text-sm'>
+            Specializing in full stack development and exploring the frontiers of AI and data science
           </p>
         </div>
 
-        <div className='mt-8 w-[60%] flex flex-col gap-4 sm:flex-row items-center justify-evenly'>
-          <a href="../../../public/assets/cv.pdf" download>
-            <button className='cursor-pointer bg-primary border-primary border w-60 px-4 py-2 text-lg rounded font-medium hover:font-semibold hover:scale-105'>
+        <div className="mt-8 w-[60%] flex flex-col gap-4 sm:flex-row items-center justify-evenly">
+          <a href="../../../public/assets/cv.pdf" download className="w-full sm:w-60">
+            <button
+              className="block w-full h-12 bg-primary border border-primary 
+                        px-4 py-2 text-lg font-medium text-white 
+                        hover:font-semibold hover:scale-105 
+                        transition-transform duration-300 rounded"
+            >
               Download CV
             </button>
           </a>
           <button
-            className='px-4 py-2 text-primary border-primary cursor-pointer rounded border w-60 text-lg hover:scale-105 font-semibold'
             onClick={handleScroll}
+            className="block w-full sm:w-60 h-12 
+                      border border-primary text-primary 
+                      px-4 py-2 text-lg font-medium 
+                      hover:font-semibold hover:scale-105 
+                      transition-transform duration-300 rounded"
           >
             Let's Talk
           </button>
         </div>
+
       </motion.div>
     </motion.section>
   );
