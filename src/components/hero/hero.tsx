@@ -1,5 +1,5 @@
 import { motion, Variants } from 'framer-motion';
-import me from '../../../public/assets/me.png';
+import me from '@/assets/me.png';
 import {
   staggerContainer,
   slideIn,
@@ -31,7 +31,7 @@ const Hero = () => {
 
         <motion.p
           variants={textContainer}
-          className='hidden md:block absolute top-4 left-44 md:left-60 text-center text-sm'
+          className='hidden sm:block absolute top-4 left-44 md:left-60 text-center text-sm'
         >
           {Array.from("Hello! I am ").map((letter, index) => (
             <motion.span variants={textVariant2} key={index}>

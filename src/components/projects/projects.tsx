@@ -14,21 +14,23 @@ import { staggerContainer, slideIn } from "@/utils/motion";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
 
-// Images import
-import Evergreen from "../../../public/assets/evergreen.png";
-import MyDesktopPlanner from "../../../public/assets/desktopPlanner.png";
-import foorweb from "../../../public/assets/foorweb_cover.png";
-import Optimum from "../../../public/assets/optimum_cover.png";
-import optimumWebSite from "../../../public/assets/Cover.png";
-import chateauDesEnfants from "../../../public/assets/cover_chateau_des_enfants.png";
-import CseForums from "../../../public/assets/cseForums.png";
-import ibtikar from "../../../public/assets/ibtikar.png";
-import OrganiserApp from "../../../public/assets/organiserApp.png";
-import MyPortfolio from "../../../public/assets/portfolio.png";
-import Dari from "../../../public/assets/Cover-Dari.png";
-import Doclib from "../../../public/assets/doclib.png";
-import lock from "../../../public/assets/lock.svg";
-import ghack from "../../../public/assets/ghack_algiers.png";
+// Images import - convertir en importations statiques pour Next.js
+import Evergreen from "../../assets/evergreen.png";
+import MyDesktopPlanner from "../../assets/desktopPlanner.png";
+import foorweb from "../../assets/foorweb_cover.png";
+import Optimum from "../../assets/optimum_cover.png";
+import optimumWebSite from "../../assets/Cover.png";
+import chateauDesEnfants from "../../assets/cover_chateau_des_enfants.png";
+import CseForums from "../../assets/cseForums.png";
+import ibtikar from "../../assets/ibtikar.png";
+import OrganiserApp from "../../assets/organiserApp.png";
+import MyPortfolio from "../../assets/portfolio.png";
+import Dari from "../../assets/Cover-Dari.png";
+import Doclib from "../../assets/doclib.png";
+import lock from "../../assets/lock.svg";
+import ghack from "../../assets/ghack_algiers.png";
+
+import line from "../../assets/line.png";
 
 interface Project {
   title: string;
@@ -247,9 +249,11 @@ const Projects = () => {
                       <Image
                         src={project.img}
                         alt={project.title}
-                        className="z-1 overflow-hidden object-contain"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        layout="responsive"
+                        width={500}
+                        height={300}
+                        className="object-contain"
+                        priority
                       />
                     </div>
                   </div>
@@ -290,8 +294,8 @@ const Projects = () => {
                       <Image
                         src={lock}
                         alt="lock"
-                        fill
-                        sizes="40px"
+                        width={40}
+                        height={40}
                       />
                     </div>
                   )}

@@ -2,18 +2,19 @@
 
 import Image from 'next/image';
 import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
+import line from '@/assets/line.png';
 
 const Sidebar = () => {
   return (
     <div className="hidden md:block h-[100vh] w-[44px] fixed top-0 flex-col items-center">
       <div className='w-[100%] flex items-center justify-center'>
-        {/* <Image 
-          src="../../.../../public/assets/line.png" 
+        <Image 
+          src={line}
           alt="Line decoration" 
           width={2} 
           height={300}
           priority
-        /> */}
+        />
       </div>
       <div className='ml-2'> 
         <div className='my-3'>

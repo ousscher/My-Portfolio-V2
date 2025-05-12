@@ -10,7 +10,7 @@ import 'swiper/css';
 import { motion } from "framer-motion";
 import { textVariant } from '@/utils/motion';
 import { staggerContainer, slideIn } from '@/utils/motion';
-import texture from '../../../public/assets/texture.png';
+import texture from '@/assets/texture.png';
 
 const Skills = () => {
   return (
