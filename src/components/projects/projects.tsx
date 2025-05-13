@@ -13,8 +13,9 @@ import { textVariant } from "@/utils/motion";
 import { staggerContainer, slideIn } from "@/utils/motion";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-// Images import - convertir en importations statiques pour Next.js
+// Images import
 import Evergreen from "../../assets/evergreen.png";
 import MyDesktopPlanner from "../../assets/desktopPlanner.png";
 import foorweb from "../../assets/foorweb_cover.png";
@@ -41,6 +42,7 @@ interface Project {
   codeLink?: string;
   isLiveAvailable: boolean;
   liveLink?: string;
+  category: string;
 }
 
 const projects: Project[] = [
@@ -54,6 +56,7 @@ const projects: Project[] = [
     codeLink: "https://github.com/ousscher/optimum",
     isLiveAvailable: true,
     liveLink: "https://optimum-app.vercel.app/",
+    category: "mobile",
   },
   {
     title: "OPTIMUM-WEBSITE",
@@ -65,6 +68,7 @@ const projects: Project[] = [
     codeLink: "https://github.com/ousscher/optimum-website",
     isLiveAvailable: true,
     liveLink: "https://optimum-app.vercel.app/",
+    category: "web",
   },
   {
     title: "CHATEAU DES ENFANTS",
@@ -76,6 +80,7 @@ const projects: Project[] = [
     codeLink: "https://github.com/F1OOw/Gestion-Paiments-Creche",
     isLiveAvailable: false,
     liveLink: "https://optimum-app.vercel.app/",
+    category: "web",
   },
   {
     title: "FOORWEB",
@@ -88,6 +93,7 @@ const projects: Project[] = [
     isLiveAvailable: true,
     liveLink:
       "https://play.google.com/store/apps/details?id=com.foorweb.foorwebapp&hl=fr",
+    category: "mobile",
   },
   {
     title: "DOCLIB",
@@ -98,6 +104,7 @@ const projects: Project[] = [
     isCodeAvailable: true,
     codeLink: "https://github.com/GLMasters/TP-IGL",
     isLiveAvailable: false,
+    category: "web",
   },
   {
     title: "EVERGREEN",
@@ -110,6 +117,7 @@ const projects: Project[] = [
     isLiveAvailable: true,
     liveLink:
       "https://drive.google.com/file/d/1AYx4b9-tTXaFnLjNHsYfS-PuMxA5f85z/view?usp=sharing",
+    category: "mobile",
   },
   {
     title: "GHACK Website",
@@ -121,6 +129,7 @@ const projects: Project[] = [
     codeLink: "https://github.com/ousscher/EVERGREEN",
     isLiveAvailable: true,
     liveLink: "https://ghack24.gdgalgiers.com/",
+    category: "web",
   },
   {
     title: "DARIAPP",
@@ -131,6 +140,7 @@ const projects: Project[] = [
     isCodeAvailable: true,
     codeLink: "https://github.com/ousscher/Devfest-23",
     isLiveAvailable: false,
+    category: "mobile",
   },
   {
     title: "My Desktop Planner",
@@ -141,6 +151,7 @@ const projects: Project[] = [
     isCodeAvailable: true,
     codeLink: "https://github.com/ousscher/My-Dsktop-Planner",
     isLiveAvailable: false,
+    category: "desktop",
   },
   {
     title: "CSEFORUMS",
@@ -150,6 +161,7 @@ const projects: Project[] = [
       "CSEFORUMS is a knowledge-sharing platform created by the CSE club, allowing our members to ask questions, find answers, and explore a range of exciting fields (currently under development).",
     isCodeAvailable: false,
     isLiveAvailable: false,
+    category: "web",
   },
   {
     title: "IBTIKAR WEBSITE",
@@ -160,6 +172,7 @@ const projects: Project[] = [
     isCodeAvailable: false,
     isLiveAvailable: true,
     liveLink: "https://i-btikar-website.vercel.app/",
+    category: "web",
   },
   {
     title: "CSE ORGANISER'S APP",
@@ -169,6 +182,7 @@ const projects: Project[] = [
       "The CSE Organizers application simplifies logistics and member management during our CSE events. Coordination, tasks, resources, and efficient communication are all integrated into a single application (currently under development).",
     isCodeAvailable: false,
     isLiveAvailable: false,
+    category: "mobile",
   },
   {
     title: "MY PORTFOLIO",
@@ -179,15 +193,29 @@ const projects: Project[] = [
     codeLink: "https://github.com/ousscher/My-Portfolio",
     isLiveAvailable: true,
     liveLink: "https://my-portfolio-8745q4qce-ousschers-projects.vercel.app",
+    category: "web",
   },
 ];
 
 const Projects = () => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
-  
+  const [activeTab, setActiveTab] = useState<string>("all");
+  const [showDetails, setShowDetails] = useState<{ [key: number]: boolean }>({});
+
   const handleSlideChange = (swiper: any) => {
     setActiveSlide(swiper.realIndex);
   };
+
+  const toggleDetails = (index: number) => {
+    setShowDetails(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
+  const filteredProjects = activeTab === "all" 
+    ? projects 
+    : projects.filter(project => project.category === activeTab);
 
   return (
     <motion.section
@@ -210,110 +238,179 @@ const Projects = () => {
       >
         My Projects
       </motion.h1>
+
+      {/* Tabs */}
+      <div className="w-[90%] flex justify-center mb-8 mt-6">
+        <div className="flex border-2 border-border rounded-lg overflow-hidden">
+          <button 
+            className={`px-4 py-2 font-medium text-sm sm:text-base sm:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'all' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            onClick={() => setActiveTab('all')}
+          >
+            All
+          </button>
+          <button 
+            className={`px-4 py-2 font-medium text-sm sm:text-base sm:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'web' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            onClick={() => setActiveTab('web')}
+          >
+            Web
+          </button>
+          <button 
+            className={`px-4 py-2 font-medium text-sm sm:text-base sm:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'mobile' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            onClick={() => setActiveTab('mobile')}
+          >
+            Mobile
+          </button>
+          <button 
+            className={`px-4 py-2 font-medium text-sm sm:text-base sm:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'desktop' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            onClick={() => setActiveTab('desktop')}
+          >
+            Desktop
+          </button>
+        </div>
+      </div>
+
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className="swiper-container mt-4 md:mt-2 relative w-[100%] flex flex-row justify-center items-center overflow-visible"
       >
-        <Swiper
-          className="w-[90%]"
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={60}
-          slidesPerView={1.5}
-          navigation={{
-            prevEl: ".custom-prev",
-            nextEl: ".custom-next",
-          }}
-          loop={true}
-          centeredSlides={true}
-          onSlideChange={(swiper) => handleSlideChange(swiper)}
-        >
-          {projects.map((project, index) => (
-            <SwiperSlide key={index} className={`${index === activeSlide ? "active-slide" : ""}`}>
-              <div
-                className={`flex flex-col justify-evenly h-[70vh] border-2 border-border mb-10 mt-10 mx-auto max-w-[100%] md:max-w-none bg-card text-card-foreground ${
-                  index === activeSlide ? "slide-active-design" : ""
-                }`}
-              >
-                <p className="text-center text-xl">{project.title}</p>
+        {filteredProjects.length > 0 ? (
+          <Swiper
+            className="w-[90%]"
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={60}
+            slidesPerView={1.5}
+            breakpoints={{
+              320: { slidesPerView: 1, spaceBetween: 20 },
+              640: { slidesPerView: 1.2, spaceBetween: 40 },
+              1024: { slidesPerView: 1.5, spaceBetween: 60 }
+            }}
+            navigation={{
+              prevEl: ".custom-prev",
+              nextEl: ".custom-next",
+            }}
+            loop={filteredProjects.length > 1}
+            centeredSlides={true}
+            onSlideChange={(swiper) => handleSlideChange(swiper)}
+          >
+            {filteredProjects.map((project, index) => (
+              <SwiperSlide key={index} className={`${index === activeSlide ? "active-slide" : ""}`}>
                 <div
-                  className={`text-center md:text-left flex flex-col md:flex-row justify-evenly items-center h-[75%] md:h-[60%]`}
+                  className={`flex flex-col justify-evenly h-[70vh] border-2 border-border mb-10 mt-10 mx-auto max-w-[100%] md:max-w-none bg-card text-card-foreground ${
+                    index === activeSlide ? "slide-active-design" : ""
+                  }`}
                 >
+                  <p className="text-center text-xl font-medium">{project.title}</p>
                   <div
-                    className={`h-[100%] md:w-[40%] w-[100%] flex-col justify-evenly text-center hidden md:flex`}
+                    className={`text-center md:text-left flex flex-col md:flex-row justify-evenly items-center h-[75%] md:h-[60%]`}
                   >
-                    <p className="">{project.details}</p>
-                    <p>Technologies : {project.technologies}</p>
-                  </div>
-                  <div className="md:w-[45%] w-full h-[50%] md:h-auto flex items-center justify-center">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={project.img}
-                        alt={project.title}
-                        layout="responsive"
-                        width={500}
-                        height={300}
-                        className="object-contain"
-                        priority
-                      />
+                    <div
+                      className={`h-auto md:w-[40%] w-[90%] flex-col justify-evenly text-center hidden md:flex`}
+                    >
+                      <p className="line-clamp-6 overflow-y-auto max-h-32">{project.details}</p>
+                      <p className="mt-4 text-primary-foreground px-3 py-1 bg-primary inline-block rounded">
+                        {project.technologies}
+                      </p>
+                    </div>
+                    <div className="md:w-[45%] w-full h-[50%] md:h-auto flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={project.img}
+                          alt={project.title}
+                          layout="responsive"
+                          width={500}
+                          height={300}
+                          className="object-contain"
+                          priority
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={`md:hidden w-[90%] flex flex-col justify-center items-center mt-2`}
+                    >
+                      <div className="relative mb-2">
+                        <p className={`text-sm ${showDetails[index] ? '' : 'line-clamp-2'}`}>
+                          {project.details}
+                        </p>
+                        <button 
+                          onClick={() => toggleDetails(index)} 
+                          className="text-primary text-sm flex items-center justify-center mt-1"
+                        >
+                          {showDetails[index] ? (
+                            <>
+                              <FaEyeSlash className="mr-1" /> Hide details
+                            </>
+                          ) : (
+                            <>
+                              <FaEye className="mr-1" /> Show details
+                            </>
+                          )}
+                        </button>
+                      </div>
+                      <p className="mt-2 text-xs bg-primary text-primary-foreground px-2 py-1 rounded">
+                        {project.technologies}
+                      </p>
                     </div>
                   </div>
-                  <div
-                    className={`md:w-[40%] w-full px-2 flex-col justify-evenly text-center flex md:hidden`}
-                  >
-                    <p className="text-sm">{project.details}</p>
-                    <p>Technologies : {project.technologies}</p>
+                  <div className="flex flex-row justify-around h-auto py-3">
+                    {project.isLiveAvailable && (
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-[30%] h-10 max-w-[120px]"
+                      >
+                        <button className="bg-primary text-primary-foreground px-4 h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
+                          Live
+                        </button>
+                      </a>
+                    )}
+                    {project.isCodeAvailable && (
+                      <a
+                        href={project.codeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-[30%] h-10 max-w-[120px]"
+                      >
+                        <button className="border-[1px] border-border h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
+                          Code
+                        </button>
+                      </a>
+                    )}
+                    {!project.isCodeAvailable && !project.isLiveAvailable && (
+                      <div className="h-10 w-10 relative cursor-pointer">
+                        <Image
+                          src={lock}
+                          alt="lock"
+                          width={40}
+                          height={40}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className="flex flex-row justify-around h-[5%] md:h-auto">
-                  {project.isLiveAvailable && (
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-[30%] h-10 ml-3"
-                    >
-                      <button className="bg-primary text-primary-foreground px-4 h-[100%] w-[100%] rounded hover:scale-105">
-                        Live
-                      </button>
-                    </a>
-                  )}
-                  {project.isCodeAvailable && (
-                    <a
-                      href={project.codeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-[30%] h-10 ml-3"
-                    >
-                      <button className="border-[1px] border-border h-[100%] w-[100%] rounded hover:scale-105">
-                        Code
-                      </button>
-                    </a>
-                  )}
-                  {!project.isCodeAvailable && !project.isLiveAvailable && (
-                    <div className="h-10 w-10 ml-8 relative cursor-pointer">
-                      <Image
-                        src={lock}
-                        alt="lock"
-                        width={40}
-                        height={40}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className="absolute top-1/2 left-[10px] transform -translate-y-1/2 cursor-pointer">
-          <button className="custom-prev">
-            <FaArrowLeft className="w-10 h-10 text-foreground" />
-          </button>
-        </div>
-        <div className="absolute top-1/2 right-[10px] transform -translate-y-1/2">
-          <button className="custom-next">
-            <FaArrowRight className="w-10 h-10 text-foreground" />
-          </button>
-        </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <div className="text-center py-16 text-gray-500">
+            Aucun projet dans cette catégorie
+          </div>
+        )}
+        
+        {filteredProjects.length > 1 && (
+          <>
+            <div className="absolute top-1/2 left-[10px] transform -translate-y-1/2 cursor-pointer z-10">
+              <button className="custom-prev">
+                <FaArrowLeft className="w-8 h-8 md:w-10 md:h-10 text-foreground" />
+              </button>
+            </div>
+            <div className="absolute top-1/2 right-[10px] transform -translate-y-1/2 z-10">
+              <button className="custom-next">
+                <FaArrowRight className="w-8 h-8 md:w-10 md:h-10 text-foreground" />
+              </button>
+            </div>
+          </>
+        )}
       </motion.div>
     </motion.section>
   );
