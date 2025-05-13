@@ -65,14 +65,14 @@ export const slideIn = (
 });
 
 export const staggerContainer = (
-  staggerChildren?: number,
-  delayChildren?: number
+  staggerChildren: number = 0.1,
+  delayChildren: number   = 0
 ): Variants => ({
   hidden: {},
   show: {
     transition: {
       staggerChildren,
-      delayChildren: delayChildren || 0,
+      delayChildren,
     },
   },
 });

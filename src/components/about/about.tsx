@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { staggerContainer, slideIn, textVariant, fadeIn } from '@/utils/motion';
+import { staggerContainer, slideIn, textVariant } from '@/utils/motion';
 
 interface InformationItem {
   title: string;

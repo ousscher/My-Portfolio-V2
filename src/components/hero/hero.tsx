@@ -1,4 +1,4 @@
-import { motion, Variants, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import me from '@/assets/me.png';
 import {
@@ -8,6 +8,7 @@ import {
   textContainer,
   textVariant2
 } from '../../utils/motion';
+import Image from 'next/image';
 
 const Hero = () => {
   const [displayIndex, setDisplayIndex] = useState(0);
@@ -23,7 +24,7 @@ const Hero = () => {
     }, 4000); // Switch every 4 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [titles]);
 
   const handleScroll = () => {
     const section = document.getElementById("contact");
@@ -50,25 +51,30 @@ const Hero = () => {
         variants={slideIn('left', 'tween', 0.2, 1)}
         className='flex w-[55%] relative'
       >
-        <img src={me.src} alt="myPhoto" className='w-64 md:w-72' />
+        <Image 
+          src={me} 
+          alt="myPhoto" 
+          className='w-64 md:w-72'
+          priority
+        />
 
         <motion.p
           variants={textContainer}
           className='hidden sm:block absolute top-4 left-44 md:left-60 text-center text-sm'
         >
           {Array.from("Hello! I am ").map((letter, index) => (
-            <motion.span variants={textVariant2} key={index}>
-              {letter === ' ' ? '\u00A0' : letter}
-            </motion.span>
+        <motion.span variants={textVariant2} key={index}>
+          {letter === ' ' ? '\u00A0' : letter}
+        </motion.span>
           ))}
           {Array.from("Oussama Cherguelaine").map((letter, index) => (
-            <motion.span
-              variants={textVariant2}
-              key={index}
-              className='text-[#7127BA] font-bold'
-            >
-              {letter === ' ' ? '\u00A0' : letter}
-            </motion.span>
+        <motion.span
+          variants={textVariant2}
+          key={index}
+          className='text-[#7127BA] font-bold'
+        >
+          {letter === ' ' ? '\u00A0' : letter}
+        </motion.span>
           ))}
         </motion.p>
 
@@ -78,17 +84,17 @@ const Hero = () => {
           style={{ whiteSpace: 'pre-line' }}
         >
           {["Hello! I am", "Oussama", "Cherguelaine"].map((word, wordIndex) => (
-            <div key={wordIndex}>
-              {Array.from(word).map((letter, letterIndex) => (
-                <motion.span
-                  variants={textVariant2}
-                  key={letterIndex}
-                  className={wordIndex >= 1 ? 'text-[#7127BA] font-bold' : ''}
-                >
-                  {letter === ' ' ? '\u00A0' : letter}
-                </motion.span>
-              ))}
-            </div>
+        <div key={wordIndex}>
+          {Array.from(word).map((letter, letterIndex) => (
+            <motion.span
+          variants={textVariant2}
+          key={letterIndex}
+          className={wordIndex >= 1 ? 'text-[#7127BA] font-bold' : ''}
+            >
+          {letter === ' ' ? '\u00A0' : letter}
+            </motion.span>
+          ))}
+        </div>
           ))}
         </motion.div>
 
@@ -96,30 +102,30 @@ const Hero = () => {
           <div>A passionate professional who</div>
           <div className='text-2xl lg:text-3xl'>Transforms ideas into</div>
           <div className='text-3xl'>
-            elegant{' '}
-            <span className='text-[#7127BA] tracking-widest text-2xl lg:text-3xl'>
-              solutions...
-            </span>
+        elegant{' '}
+        <span className='text-[#7127BA] tracking-widest text-2xl lg:text-3xl'>
+          solutions...
+        </span>
           </div>
           <div className='text-sm tracking-wide mt-1'>
-            Building bridges between technology and innovation
+        Building bridges between technology and innovation
           </div>
           
           <div className='relative h-12 mt-4 overflow-hidden'>
-            <AnimatePresence mode='wait'>
-              <motion.div
-                key={displayIndex}
-                variants={titleVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className='absolute inset-0 flex items-center'
-              >
-                <span className='text-xl font-bold text-[#7127BA]'>
-                  {titles[displayIndex]}
-                </span>
-              </motion.div>
-            </AnimatePresence>
+        <AnimatePresence mode='wait'>
+          <motion.div
+            key={displayIndex}
+            variants={titleVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className='absolute inset-0 flex items-center'
+          >
+            <span className='text-xl font-bold text-[#7127BA]'>
+          {titles[displayIndex]}
+            </span>
+          </motion.div>
+        </AnimatePresence>
           </div>
         </motion.div>
       </motion.div>
@@ -175,7 +181,7 @@ const Hero = () => {
                       hover:font-semibold hover:scale-105 
                       transition-transform duration-300 rounded"
           >
-            Let's Talk
+            Let&apos;s Talk
           </button>
         </div>
 

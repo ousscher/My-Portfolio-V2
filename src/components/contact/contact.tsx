@@ -5,11 +5,11 @@ import React, { useRef, useState, FormEvent } from 'react';
 import { FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { motion } from "framer-motion";
-import { staggerContainer, textVariant, slideIn } from '@/utils/motion';
+import { textVariant, slideIn, staggerContainer } from '@/utils/motion';
 
 const Contact: React.FC = () => {
   const [message, setMessage] = useState<string | null>(null);
-  const [success, setSuccess] = useState<boolean | null>(null);
+  // const [success, setSuccess] = useState<boolean | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
 
   return (
     <motion.section 
-      variants={staggerContainer}
+      variants={staggerContainer(/* optional overrides here */)}
       initial='hidden'
       whileInView='show'
       viewport={{once: false, amount: 0.25}}
@@ -138,7 +138,7 @@ const Contact: React.FC = () => {
       </motion.div>
       
       <div className="flex justify-center items-center h-32">
-        {message && (
+        {/* {message && (
           <p 
             className={`text-xl font-semibold ${
               success === null 
@@ -150,7 +150,7 @@ const Contact: React.FC = () => {
           >
             {message}
           </p>
-        )}
+        )} */}
       </div>
     </motion.section>
   );

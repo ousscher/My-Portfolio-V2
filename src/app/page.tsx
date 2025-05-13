@@ -8,7 +8,6 @@ import Projects from '@/components/projects/projects';
 import Contact from '@/components/contact/contact';
 import Footer from '@/components/footer/footer';
 import Sidebar from '@/components/sidebar/sidebar';
-import ThemeToggle from '@/components/navbar/theme_toggle';
 
 export default function Home() {
   return (

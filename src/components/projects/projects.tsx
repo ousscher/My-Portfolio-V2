@@ -31,8 +31,6 @@ import Doclib from "../../assets/doclib.png";
 import lock from "../../assets/lock.svg";
 import ghack from "../../assets/ghack_algiers.png";
 
-import line from "../../assets/line.png";
-
 interface Project {
   title: string;
   img: any;
