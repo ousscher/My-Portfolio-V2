@@ -302,7 +302,13 @@ const projects: Project[] = [
 const Projects = () => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [activeTab, setActiveTab] = useState<string>("all");
-  const [showDetails, setShowDetails] = useState<{ [key: number]: boolean }>({});
+  const filteredProjects = activeTab === "all" 
+    ? projects 
+    : projects.filter(project => project.category === activeTab);
+    
+  const [showDetails, setShowDetails] = useState<{ [key: number]: boolean }>(
+    Object.fromEntries(filteredProjects.map((_, i) => [i, true]))
+  );
 
   const handleSlideChange = (swiper: any) => {
     setActiveSlide(swiper.realIndex);
@@ -315,9 +321,7 @@ const Projects = () => {
     }));
   };
 
-  const filteredProjects = activeTab === "all" 
-    ? projects 
-    : projects.filter(project => project.category === activeTab);
+  
 
   return (
     <motion.section
@@ -388,7 +392,7 @@ const Projects = () => {
             spaceBetween={60}
             slidesPerView={1.5}
             breakpoints={{
-              320: { slidesPerView: 1, spaceBetween: 20 },
+              320: { slidesPerView: 1.15, spaceBetween: 20 },
               640: { slidesPerView: 1.2, spaceBetween: 40 },
               1024: { slidesPerView: 1.5, spaceBetween: 60 }
             }}
@@ -425,8 +429,7 @@ const Projects = () => {
                           <Image
                             src={project.img}
                             alt={project.title}
-                            className="object-contain max-h-full max-w-full"
-                            priority
+                            className="object-contain max-h-full max-w-full rounded"
                           />
                         </div>
                       </div>
@@ -440,7 +443,7 @@ const Projects = () => {
                         </p>
                         <button 
                           onClick={() => toggleDetails(index)} 
-                          className="text-primary text-xs sm:text-sm flex items-center justify-center mt-1"
+                          className="text-blue-600 text-xs sm:text-sm flex items-center justify-center mt-1"
                         >
                           {showDetails[index] ? (
                             <>
@@ -453,7 +456,7 @@ const Projects = () => {
                           )}
                         </button>
                       </div>
-                      <p className="mt-2 text-xs bg-primary text-primary-foreground px-2 py-1 rounded">
+                      <p className="mt-2 text-xs bg-blue-600 text-white px-2 py-1 rounded">
                         {project.technologies}
                       </p>
                     </div>
@@ -466,7 +469,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="w-[30%] h-10 max-w-[120px]"
                       >
-                        <button className="bg-primary text-primary-foreground text-sm sm:text-base px-4 h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
+                        <button className="bg-blue-600 text-white text-sm sm:text-base px-4 h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
                           Live
                         </button>
                       </a>
@@ -478,7 +481,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="w-[30%] h-10 max-w-[120px]"
                       >
-                        <button className="border-[1px] border-border text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
+                        <button className="border-[1px] border-gray-300 text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
                           Code
                         </button>
                       </a>
@@ -486,11 +489,10 @@ const Projects = () => {
                     {project.isPaperAvailable && (
                       <a
                         href={project.paperLink} 
-                        // download 
                         rel="noopener noreferrer"
                         className="w-[30%] h-10 max-w-[120px]"
                       >
-                        <button className="border-[1px] border-primary bg-primary/10 text-primary text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform flex items-center justify-center gap-1">
+                        <button className="border-[1px] border-blue-600 bg-blue-50 text-blue-600 text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform flex items-center justify-center gap-1">
                           <FaFileAlt className="text-xs" />
                           Paper
                         </button>
@@ -498,12 +500,7 @@ const Projects = () => {
                     )}
                     {!project.isCodeAvailable && !project.isLiveAvailable && !project.isPaperAvailable && (
                       <div className="h-10 w-10 relative cursor-pointer">
-                        <Image
-                          src={lock}
-                          alt="lock"
-                          width={40}
-                          height={40}
-                        />
+                        <span className="text-2xl">🔒</span>
                       </div>
                     )}
                   </div>
@@ -523,13 +520,13 @@ const Projects = () => {
               className="custom-prev absolute top-1/2 left-[10px] transform -translate-y-1/2 cursor-pointer z-10 hover:scale-110 transition-transform"
               aria-label="Previous slide"
             >
-              <FaArrowLeft className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-foreground" />
+              <FaArrowLeft className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-gray-900" />
             </button>
             <button 
               className="custom-next absolute top-1/2 right-[10px] transform -translate-y-1/2 cursor-pointer z-10 hover:scale-110 transition-transform"
               aria-label="Next slide"
             >
-              <FaArrowRight className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-foreground" />
+              <FaArrowRight className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-gray-900" />
             </button>
           </>
         )}
