@@ -13,7 +13,7 @@ import { textVariant } from "@/utils/motion";
 import { staggerContainer, slideIn } from "@/utils/motion";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaFileAlt } from "react-icons/fa";
 
 // Images import
 import Evergreen from "../../assets/evergreen.png";
@@ -30,6 +30,12 @@ import Dari from "../../assets/Cover-Dari.png";
 import Doclib from "../../assets/doclib.png";
 import lock from "../../assets/lock.svg";
 import ghack from "../../assets/ghack_algiers.png";
+// Add AI project images when available
+import yassirAI from "../../assets/yassir_ai.png";
+import cnnClassifier from "../../assets/cnn_image_classifier.png";
+import kmm from "../../assets/clustering_result.png";
+import birdRecognition from "../../assets/bird_recognition.png";
+import JadeGridGame from "../../assets/jade_grid_game.png";
 
 interface Project {
   title: string;
@@ -40,28 +46,172 @@ interface Project {
   codeLink?: string;
   isLiveAvailable: boolean;
   liveLink?: string;
+  isPaperAvailable?: boolean;
+  paperLink?: string;
   category: string;
 }
 
 const projects: Project[] = [
+  // AI Projects
+  {
+    title: "YASSIR RESTAURANT RECOMMENDER",
+    img: yassirAI,
+    technologies: "Python NLP SVM BERT Flask React",
+    details:
+      "AI-powered platform developed during Yassir Hackathon to recommend partner restaurants for food delivery. Features web scraping for multi-platform review extraction, NLP-based sentiment classification using SVM and pre-trained models (BERT), achieving 98% accuracy. Includes a web dashboard for real-time insights and restaurant evaluation.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/YASSIR_AI_HACKATHON",
+    isLiveAvailable: false,
+    category: "ai",
+  },
+  {
+    title: "KMM: DISTRIBUTED HYBRID CLUSTERING",
+    img: kmm, 
+    technologies: "Python MPI K-Means K-Medoids NumPy",
+    details:
+      "KMM (K-Means-Medoids) is a distributed hybrid clustering algorithm combining K-Means speed with K-Medoids robustness. Implements MPI-based distributed architecture with 1 master and 7 workers for parallel processing. Optimizes clustering performance on large-scale datasets through intelligent workload distribution.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/KMM-clustering",
+    isLiveAvailable: false,
+    category: "ai",
+  },
+  {
+    title: "BIRD SPECIES RECOGNITION",
+    img: birdRecognition,
+    technologies: "Python TensorFlow Keras CNN CUB-200",
+    details:
+      "Image classification system for fine-grained bird species recognition using the CUB-200-2011 dataset. Trained on 11,000+ images across 200 species using convolutional neural networks. Implements transfer learning and data augmentation techniques for improved accuracy in challenging visual categorization tasks.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/bird-recognition-dl",
+    isLiveAvailable: false,
+    category: "ai",
+  },
+  // {
+  //   title: "ETHEREUM PRICE FORECASTING",
+  //   img: null,
+  //   technologies: "Python Pandas ARIMA Prophet Time-Series",
+  //   details:
+  //     "Time series analysis framework for Ethereum (ETH/USDT) market prediction. Explores historical data patterns using ARIMA, Prophet, and statistical models to forecast cryptocurrency trends. Provides insights into market dynamics, volatility patterns, and price movements for informed decision-making.",
+  //   isCodeAvailable: true,
+  //   codeLink: "https://github.com/ousscher/ethereum-forecasting",
+  //   isLiveAvailable: false,
+  //   category: "ai",
+  // },
+  {
+    title: "CNN IMAGE CLASSIFIER",
+    img: cnnClassifier,
+    technologies: "TensorFlow Keras CNN Python",
+    details:
+      "Convolutional Neural Network implementation for multi-dataset image classification. Trained on Pokemon and Dog Breed datasets with custom CNN architectures. Features data preprocessing, augmentation pipelines, and performance optimization for accurate species and breed identification.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/Image-Classification-for-dogs-and-pokemons",
+    isLiveAvailable: false,
+    category: "ai",
+  },
+  {
+    title: "NEURAL ARCHITECTURE SEARCH",
+    img: null,
+    technologies: "Python TensorFlow NAS MNIST",
+    details:
+      "Modular Neural Architecture Search (NAS) framework for automated CNN design optimization. Uses random search and full training on MNIST to discover optimal network architectures. Explores hyperparameter spaces including layer configurations, activation functions, and optimization strategies.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/NEURAL-ARCHITECTURE-SEARCH-CNN",
+    isLiveAvailable: false,
+    category: "ai",
+  },
+  {
+    title: "JADE Grid Game",
+    img: JadeGridGame,
+    technologies: "Java JADE Multi-Agent Systems",
+    details:
+      "A grid-based multi-agent trail race built with the JADE framework. Each agent competes to reach its goal by moving across colored tiles, where each move requires a matching token. Agents can negotiate token trades, strategize cooperation, or betray others to progress. The game ends when a player reaches the goal or when all agents are blocked.",
+    isCodeAvailable: true,
+    isLiveAvailable: false,
+    isPaperAvailable: true,
+    paperLink: "../../../docs/jade_grid_game_paper.pdf",
+    codeLink: "https://github.com/ousscher/JADE-AGENT-GRIDGAME",
+    category: "ai"
+  }, 
+  // {
+  //   title: "CNN HYPERPARAMETER OPTIMIZATION",
+  //   img: null,
+  //   technologies: "Python Meta-heuristics Neighborhood Search",
+  //   details:
+  //     "Research project on CNN hyperparameter optimization using neighborhood-based meta-heuristic algorithms. Published research paper exploring novel approaches to automated neural network tuning. Investigates local search, simulated annealing, and genetic algorithms for architecture optimization.",
+  //   isCodeAvailable: true,
+  //   codeLink: "https://github.com/ousscher/cnn-metaheuristic-optimization",
+  //   isLiveAvailable: false,
+  //   isPaperAvailable: true,
+  //   paperLink: "https://...", // Add your paper link
+  //   category: "ai",
+  // },
+
+  // Mobile Projects
   {
     title: "OPTIMUM",
     img: Optimum,
     technologies: "Flutter Firebase Hive",
     details:
-      "Optimum is a mobile appointment management application designed for doctors, streamlining appointment scheduling, organization, and management to improve efficiency in healthcare.",
+      "Mobile appointment management application designed for healthcare professionals. Streamlines doctor appointment scheduling, organization, and patient management. Features offline-first architecture with Hive for local storage and Firebase for cloud synchronization.",
     isCodeAvailable: false,
-    codeLink: "https://github.com/ousscher/optimum",
     isLiveAvailable: true,
     liveLink: "https://optimum-app.vercel.app/",
     category: "mobile",
   },
   {
+    title: "FOORWEB",
+    img: foorweb,
+    technologies: "Flutter Firebase flutter_BLoC Hive",
+    details:
+      "Admin application for e-commerce platform management. Enables efficient store administration, inventory tracking, order processing, and customer interaction management. Implements BLoC pattern for state management and offline-first capabilities.",
+    isCodeAvailable: false,
+    isLiveAvailable: true,
+    liveLink:
+      "https://play.google.com/store/apps/details?id=com.foorweb.foorwebapp&hl=fr",
+    category: "mobile",
+  },
+  {
+    title: "EVERGREEN",
+    img: Evergreen,
+    technologies: "Flutter Firebase Hive",
+    details:
+      "Educational mobile game teaching children environmental protection through interactive gameplay. Developed as part of PRJP module at ESI preparatory cycle. Gamifies ecological concepts with engaging challenges and progress tracking.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/EVERGREEN",
+    isLiveAvailable: true,
+    liveLink:
+      "https://drive.google.com/file/d/1AYx4b9-tTXaFnLjNHsYfS-PuMxA5f85z/view?usp=sharing",
+    category: "mobile",
+  },
+  {
+    title: "DARIAPP",
+    img: Dari,
+    technologies: "Flutter Express.js MongoDB",
+    details:
+      "Automated home construction monitoring solution developed during DevFest Constantine hackathon. Simplifies tracking of construction progress with photo documentation, milestone management, and real-time updates for homeowners and contractors.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/Devfest-23",
+    isLiveAvailable: false,
+    category: "mobile",
+  },
+  {
+    title: "CSE ORGANISER'S APP",
+    img: OrganiserApp,
+    technologies: "Flutter Firebase",
+    details:
+      "Event logistics and member management application for CSE club. Centralizes coordination, task assignment, resource allocation, and team communication for efficient event organization. Currently under active development.",
+    isCodeAvailable: false,
+    isLiveAvailable: false,
+    category: "mobile",
+  },
+
+  // Web Projects
+  {
     title: "OPTIMUM-WEBSITE",
     img: optimumWebSite,
-    technologies: "React TailwindCss Vite.js",
+    technologies: "React TailwindCSS Vite.js",
     details:
-      "Optimum-Website is your ultimate resource for everything related to Optimum, the innovative mobile application designed for doctors. Here, you'll find detailed information about the app's features, benefits, organisaton and management.",
+      "Landing page and documentation site for Optimum mobile application. Provides comprehensive information about app features, benefits, organization capabilities, and management tools for healthcare professionals.",
     isCodeAvailable: true,
     codeLink: "https://github.com/ousscher/optimum-website",
     isLiveAvailable: true,
@@ -71,127 +221,81 @@ const projects: Project[] = [
   {
     title: "CHATEAU DES ENFANTS",
     img: chateauDesEnfants,
-    technologies: "React Tailwind Flask MySql Docker",
+    technologies: "React Tailwind Flask MySQL Docker",
     details:
-      "Le Château des Enfants is an open-source, locally deployed platform that streamlines daycare center management. Our mission is to simplify payment management and track children's progress, providing a seamless experience for administrators and parents.",
+      "Open-source daycare center management platform for local deployment. Streamlines payment processing, tracks children's developmental progress, and provides seamless experience for administrators and parents. Features Dockerized deployment for easy setup.",
     isCodeAvailable: true,
     codeLink: "https://github.com/F1OOw/Gestion-Paiments-Creche",
     isLiveAvailable: false,
-    liveLink: "https://optimum-app.vercel.app/",
     category: "web",
-  },
-  {
-    title: "FOORWEB",
-    img: foorweb,
-    technologies: "Flutter Firebase flutter_BLoC Hive",
-    details:
-      "Foorweb is an admin application for an online sales platform, designed to manage e-commerce stores efficiently. It streamlines store administration, inventory management, order processing, and customer interactions.",
-    isCodeAvailable: false,
-    codeLink: "https://github.com/ousscher/EVERGREEN",
-    isLiveAvailable: true,
-    liveLink:
-      "https://play.google.com/store/apps/details?id=com.foorweb.foorwebapp&hl=fr",
-    category: "mobile",
   },
   {
     title: "DOCLIB",
     img: Doclib,
-    technologies: "Flask MySql Elasticsearch Docker React.js Redux",
+    technologies: "Flask MySQL Elasticsearch Docker React Redux",
     details:
-      "Doclib is a search engine that allows users to find scientific articles using keywords (not yet deployed online).",
+      "Academic search engine for discovering scientific articles using keyword queries. Implements Elasticsearch for fast full-text search, Redux for state management, and Docker for containerized deployment. Currently in development phase.",
     isCodeAvailable: true,
     codeLink: "https://github.com/GLMasters/TP-IGL",
     isLiveAvailable: false,
     category: "web",
   },
   {
-    title: "EVERGREEN",
-    img: Evergreen,
-    technologies: "Flutter Firebase Hive",
-    details:
-      "Evergreen is an educational mobile game designed for children, focusing on environmental protection. It was initiated as part of the PRJP module in the second year of the preparatory cycle at ESI.",
-    isCodeAvailable: true,
-    codeLink: "https://github.com/ousscher/EVERGREEN",
-    isLiveAvailable: true,
-    liveLink:
-      "https://drive.google.com/file/d/1AYx4b9-tTXaFnLjNHsYfS-PuMxA5f85z/view?usp=sharing",
-    category: "mobile",
-  },
-  {
-    title: "GHACK Website",
+    title: "GHACK WEBSITE",
     img: ghack,
     technologies: "Next.js",
     details:
-      "The official Ghack Hackathon website, designed to streamline the hackathon experience, the site provides essential event information, including schedules, team registration, judging criteria, and live updates.",
+      "Official website for Ghack Hackathon event. Provides essential event information including schedules, team registration system, judging criteria, project submission portal, and live event updates for participants and organizers.",
     isCodeAvailable: false,
-    codeLink: "https://github.com/ousscher/EVERGREEN",
     isLiveAvailable: true,
     liveLink: "https://ghack24.gdgalgiers.com/",
     category: "web",
   },
   {
-    title: "DARIAPP",
-    img: Dari,
-    technologies: "Flutter Express.js MongoDb",
-    details:
-      "DARIAPP is an automated solution aimed at simplifying the monitoring of homes under construction, developed during the DevFest Constantine hackathon.",
-    isCodeAvailable: true,
-    codeLink: "https://github.com/ousscher/Devfest-23",
-    isLiveAvailable: false,
-    category: "mobile",
-  },
-  {
-    title: "My Desktop Planner",
-    img: MyDesktopPlanner,
-    technologies: "Java JavaFX",
-    details:
-      "My Desktop Planner is a task scheduling application dedicated to the efficient management of daily activities on desktop computers.",
-    isCodeAvailable: true,
-    codeLink: "https://github.com/ousscher/My-Dsktop-Planner",
-    isLiveAvailable: false,
-    category: "desktop",
-  },
-  {
-    title: "CSEFORUMS",
-    img: CseForums,
-    technologies: "TailwindCss React.js Express.js",
-    details:
-      "CSEFORUMS is a knowledge-sharing platform created by the CSE club, allowing our members to ask questions, find answers, and explore a range of exciting fields (currently under development).",
-    isCodeAvailable: false,
-    isLiveAvailable: false,
-    category: "web",
-  },
-  {
     title: "IBTIKAR WEBSITE",
     img: ibtikar,
-    technologies: "TailwindCss React.js Vite.js",
+    technologies: "TailwindCSS React.js Vite.js",
     details:
-      "Ibtikar is a fictional company specializing in innovative IT solutions, dedicated to delivering cutting-edge software and technology to meet diverse client needs.",
+      "Corporate website for Ibtikar, a fictional IT solutions company. Showcases innovative software and technology services, highlighting cutting-edge solutions for diverse client needs. Features modern design and responsive layout.",
     isCodeAvailable: false,
     isLiveAvailable: true,
     liveLink: "https://i-btikar-website.vercel.app/",
     category: "web",
   },
   {
-    title: "CSE ORGANISER'S APP",
-    img: OrganiserApp,
-    technologies: "Flutter Firebase",
+    title: "CSEFORUMS",
+    img: CseForums,
+    technologies: "TailwindCSS React.js Express.js",
     details:
-      "The CSE Organizers application simplifies logistics and member management during our CSE events. Coordination, tasks, resources, and efficient communication are all integrated into a single application (currently under development).",
+      "Knowledge-sharing platform created by CSE club for community engagement. Enables members to ask questions, find answers, and explore various technical fields. Features discussion forums, topic categorization, and member profiles. Under active development.",
     isCodeAvailable: false,
     isLiveAvailable: false,
-    category: "mobile",
+    category: "web",
   },
   {
     title: "MY PORTFOLIO",
     img: MyPortfolio,
-    technologies: "Tailwindcss React.js ",
-    details: "My personnel web site",
+    technologies: "TailwindCSS React.js",
+    details:
+      "Personal portfolio website showcasing projects, skills, and professional experience. Features responsive design, project galleries, and contact information with modern UI/UX principles.",
     isCodeAvailable: true,
     codeLink: "https://github.com/ousscher/My-Portfolio",
     isLiveAvailable: true,
     liveLink: "https://my-portfolio-8745q4qce-ousschers-projects.vercel.app",
     category: "web",
+  },
+
+  // Desktop Projects
+  {
+    title: "MY DESKTOP PLANNER",
+    img: MyDesktopPlanner,
+    technologies: "Java JavaFX",
+    details:
+      "Desktop task scheduling application for efficient daily activity management. Features calendar integration, task prioritization, reminder system, and productivity tracking. Built with JavaFX for modern desktop UI experience.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/My-Dsktop-Planner",
+    isLiveAvailable: false,
+    category: "desktop",
   },
 ];
 
@@ -239,27 +343,33 @@ const Projects = () => {
 
       {/* Tabs */}
       <div className="w-[90%] flex justify-center mb-8 mt-6">
-        <div className="flex border-2 border-border rounded-lg overflow-hidden">
+        <div className="flex flex-wrap border-2 border-border rounded-lg overflow-hidden">
           <button 
-            className={`px-4 py-2 font-medium text-sm sm:text-base sm:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'all' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            className={`px-3 py-2 font-medium text-xs sm:text-sm md:text-base sm:px-4 md:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'all' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
             onClick={() => setActiveTab('all')}
           >
             All
           </button>
           <button 
-            className={`px-4 py-2 font-medium text-sm sm:text-base sm:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'web' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            className={`px-3 py-2 font-medium text-xs sm:text-sm md:text-base sm:px-4 md:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'ai' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            onClick={() => setActiveTab('ai')}
+          >
+            AI/ML
+          </button>
+          <button 
+            className={`px-3 py-2 font-medium text-xs sm:text-sm md:text-base sm:px-4 md:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'web' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
             onClick={() => setActiveTab('web')}
           >
             Web
           </button>
           <button 
-            className={`px-4 py-2 font-medium text-sm sm:text-base sm:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'mobile' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            className={`px-3 py-2 font-medium text-xs sm:text-sm md:text-base sm:px-4 md:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'mobile' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
             onClick={() => setActiveTab('mobile')}
           >
             Mobile
           </button>
           <button 
-            className={`px-4 py-2 font-medium text-sm sm:text-base sm:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'desktop' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
+            className={`px-3 py-2 font-medium text-xs sm:text-sm md:text-base sm:px-4 md:px-6 sm:py-3 transition-colors duration-300 ${activeTab === 'desktop' ? 'bg-primary text-white' : 'bg-card hover:bg-slate-100'}`}
             onClick={() => setActiveTab('desktop')}
           >
             Desktop
@@ -293,45 +403,44 @@ const Projects = () => {
             {filteredProjects.map((project, index) => (
               <SwiperSlide key={index} className={`${index === activeSlide ? "active-slide" : ""}`}>
                 <div
-                  className={`flex flex-col justify-evenly h-[70vh] border-2 border-border mb-10 mt-10 mx-auto max-w-[100%] md:max-w-none bg-card text-card-foreground ${
+                  className={`flex flex-col justify-evenly min-h-[70vh] border-2 border-border mb-10 mt-10 mx-auto max-w-[100%] md:max-w-none bg-card text-card-foreground ${
                     index === activeSlide ? "slide-active-design" : ""
                   }`}
                 >
-                  <p className="text-center text-xl font-medium">{project.title}</p>
+                  <p className="text-center text-lg sm:text-xl font-medium px-4 py-3">{project.title}</p>
                   <div
-                    className={`text-center md:text-left flex flex-col md:flex-row justify-evenly items-center h-[75%] md:h-[60%]`}
+                    className={`text-center md:text-left flex flex-col md:flex-row ${project.img ? 'justify-evenly' : 'justify-center'} items-center flex-1 px-4 py-2`}
                   >
                     <div
-                      className={`h-auto md:w-[40%] w-[90%] flex-col justify-evenly text-center hidden md:flex`}
+                      className={`h-auto ${project.img ? 'md:w-[40%]' : 'md:w-[70%]'} w-[90%] flex-col justify-evenly text-center hidden md:flex`}
                     >
-                      <p className="line-clamp-6 overflow-y-auto max-h-32">{project.details}</p>
-                      <p className="mt-4 text-primary-foreground px-3 py-1 bg-primary inline-block rounded">
+                      <p className="text-sm leading-relaxed">{project.details}</p>
+                      <p className="mt-4 text-xs sm:text-sm text-primary-foreground px-3 py-1 bg-primary inline-block rounded">
                         {project.technologies}
                       </p>
                     </div>
-                    <div className="md:w-[45%] w-full h-[50%] md:h-auto flex items-center justify-center">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={project.img}
-                          alt={project.title}
-                          layout="responsive"
-                          width={500}
-                          height={300}
-                          className="object-contain"
-                          priority
-                        />
+                    {project.img && (
+                      <div className="md:w-[45%] w-full h-[200px] sm:h-[250px] md:h-[300px] flex items-center justify-center">
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <Image
+                            src={project.img}
+                            alt={project.title}
+                            className="object-contain max-h-full max-w-full"
+                            priority
+                          />
+                        </div>
                       </div>
-                    </div>
+                    )}
                     <div
-                      className={`md:hidden w-[90%] flex flex-col justify-center items-center mt-2`}
+                      className={`md:hidden w-[90%] flex flex-col justify-center items-center mt-3`}
                     >
                       <div className="relative mb-2">
-                        <p className={`text-sm ${showDetails[index] ? '' : 'line-clamp-2'}`}>
+                        <p className={`text-xs sm:text-sm leading-relaxed ${showDetails[index] ? '' : 'line-clamp-2'}`}>
                           {project.details}
                         </p>
                         <button 
                           onClick={() => toggleDetails(index)} 
-                          className="text-primary text-sm flex items-center justify-center mt-1"
+                          className="text-primary text-xs sm:text-sm flex items-center justify-center mt-1"
                         >
                           {showDetails[index] ? (
                             <>
@@ -349,7 +458,7 @@ const Projects = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-row justify-around h-auto py-3">
+                  <div className="flex flex-row justify-center gap-3 sm:gap-4 h-auto py-4 px-4">
                     {project.isLiveAvailable && (
                       <a
                         href={project.liveLink}
@@ -357,7 +466,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="w-[30%] h-10 max-w-[120px]"
                       >
-                        <button className="bg-primary text-primary-foreground px-4 h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
+                        <button className="bg-primary text-primary-foreground text-sm sm:text-base px-4 h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
                           Live
                         </button>
                       </a>
@@ -369,12 +478,25 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="w-[30%] h-10 max-w-[120px]"
                       >
-                        <button className="border-[1px] border-border h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
+                        <button className="border-[1px] border-border text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
                           Code
                         </button>
                       </a>
                     )}
-                    {!project.isCodeAvailable && !project.isLiveAvailable && (
+                    {project.isPaperAvailable && (
+                      <a
+                        href={project.paperLink} 
+                        // download 
+                        rel="noopener noreferrer"
+                        className="w-[30%] h-10 max-w-[120px]"
+                      >
+                        <button className="border-[1px] border-primary bg-primary/10 text-primary text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform flex items-center justify-center gap-1">
+                          <FaFileAlt className="text-xs" />
+                          Paper
+                        </button>
+                      </a>
+                    )}
+                    {!project.isCodeAvailable && !project.isLiveAvailable && !project.isPaperAvailable && (
                       <div className="h-10 w-10 relative cursor-pointer">
                         <Image
                           src={lock}
@@ -391,22 +513,24 @@ const Projects = () => {
           </Swiper>
         ) : (
           <div className="text-center py-16 text-gray-500">
-            Aucun projet dans cette catégorie
+            No projects in this category
           </div>
         )}
         
         {filteredProjects.length > 1 && (
           <>
-            <div className="absolute top-1/2 left-[10px] transform -translate-y-1/2 cursor-pointer z-10">
-              <button className="custom-prev">
-                <FaArrowLeft className="w-8 h-8 md:w-10 md:h-10 text-foreground" />
-              </button>
-            </div>
-            <div className="absolute top-1/2 right-[10px] transform -translate-y-1/2 z-10">
-              <button className="custom-next">
-                <FaArrowRight className="w-8 h-8 md:w-10 md:h-10 text-foreground" />
-              </button>
-            </div>
+            <button 
+              className="custom-prev absolute top-1/2 left-[10px] transform -translate-y-1/2 cursor-pointer z-10 hover:scale-110 transition-transform"
+              aria-label="Previous slide"
+            >
+              <FaArrowLeft className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-foreground" />
+            </button>
+            <button 
+              className="custom-next absolute top-1/2 right-[10px] transform -translate-y-1/2 cursor-pointer z-10 hover:scale-110 transition-transform"
+              aria-label="Next slide"
+            >
+              <FaArrowRight className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-foreground" />
+            </button>
           </>
         )}
       </motion.div>
