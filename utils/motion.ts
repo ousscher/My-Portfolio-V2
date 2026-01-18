@@ -44,7 +44,7 @@ export const portfolioVariant: Variants = {
 
 export const slideIn = (
   direction: 'left' | 'right' | 'up' | 'down',
-  type: string,
+  type: 'spring' | 'tween' | 'inertia',
   delay: number,
   duration: number
 ): Variants => ({
@@ -120,7 +120,7 @@ export const textContainer: Variants = {
 
 export const fadeIn = (
   direction: 'left' | 'right' | 'up' | 'down',
-  type: string,
+  type: 'spring' | 'tween' | 'inertia',
   delay: number,
   duration: number
 ): Variants => ({
