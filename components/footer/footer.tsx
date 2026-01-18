@@ -35,21 +35,21 @@ const Footer: React.FC = () => {
             </h3>
             <div className="flex flex-col space-y-3">
               <a
-                href="mailto:lo_cherguelaine@esi.dz"
+                href="mailto:oussama.cherguelaine@univ-rouen.fr"
                 className="flex items-center justify-center md:justify-start hover:text-primary-foreground group"
               >
                 <FaEnvelope className="mr-2 text-muted group-hover:text-primary-foreground" />
                 <span className="text-muted group-hover:text-primary-foreground transition-colors">
-                  lo_cherguelaine@esi.dz
+                  oussama.cherguelaine@univ-rouen.fr
                 </span>
               </a>
               <a
-                href="tel:+213540262367"
+                href="tel:+33605596651"
                 className="flex items-center justify-center md:justify-start hover:text-primary-foreground group"
               >
                 <PhoneCall className="mr-2 text-muted group-hover:text-primary-foreground" />
                 <span className="text-muted group-hover:text-primary-foreground transition-colors">
-                  +213 540 26 23 67
+                  +33 605 59 66 51
                 </span>
               </a>
             </div>

@@ -168,7 +168,7 @@ const Hero = () => {
               className="block w-full h-12 bg-primary border border-primary 
                         px-4 py-2 text-lg font-medium text-white 
                         hover:font-semibold hover:scale-105 
-                        transition-transform duration-300 rounded"
+                        transition-transform duration-300 rounded cursor-pointer" 
             >
               Download CV
             </button>
@@ -179,7 +179,7 @@ const Hero = () => {
                       border border-primary text-primary 
                       px-4 py-2 text-lg font-medium 
                       hover:font-semibold hover:scale-105 
-                      transition-transform duration-300 rounded"
+                      transition-transform duration-300 rounded cursor-pointer"
           >
             Let&apos;s Talk
           </button>

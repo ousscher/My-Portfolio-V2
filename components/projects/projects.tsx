@@ -52,7 +52,18 @@ interface Project {
 }
 
 const projects: Project[] = [
-  // AI Projects
+  {
+    title: "OPTIMUM-WEBSITE",
+    img: optimumWebSite,
+    technologies: "React TailwindCSS Vite.js",
+    details:
+      "Landing page and documentation site for Optimum mobile application. Provides comprehensive information about app features, benefits, organization capabilities, and management tools for healthcare professionals.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/optimum-website",
+    isLiveAvailable: true,
+    liveLink: "https://optimum-app.vercel.app/",
+    category: "web",
+  },
   {
     title: "YASSIR RESTAURANT RECOMMENDER",
     img: yassirAI,
@@ -86,6 +97,19 @@ const projects: Project[] = [
     isLiveAvailable: false,
     category: "ai",
   },
+  {
+    title: "JADE Grid Game",
+    img: JadeGridGame,
+    technologies: "Java JADE Multi-Agent Systems",
+    details:
+      "A grid-based multi-agent trail race built with the JADE framework. Each agent competes to reach its goal by moving across colored tiles, where each move requires a matching token. Agents can negotiate token trades, strategize cooperation, or betray others to progress. The game ends when a player reaches the goal or when all agents are blocked.",
+    isCodeAvailable: true,
+    isLiveAvailable: false,
+    isPaperAvailable: true,
+    paperLink: "../../../docs/jade_grid_game_paper.pdf",
+    codeLink: "https://github.com/ousscher/JADE-AGENT-GRIDGAME",
+    category: "ai"
+  }, 
   // {
   //   title: "ETHEREUM PRICE FORECASTING",
   //   img: null,
@@ -109,45 +133,6 @@ const projects: Project[] = [
     category: "ai",
   },
   {
-    title: "NEURAL ARCHITECTURE SEARCH",
-    img: null,
-    technologies: "Python TensorFlow NAS MNIST",
-    details:
-      "Modular Neural Architecture Search (NAS) framework for automated CNN design optimization. Uses random search and full training on MNIST to discover optimal network architectures. Explores hyperparameter spaces including layer configurations, activation functions, and optimization strategies.",
-    isCodeAvailable: true,
-    codeLink: "https://github.com/ousscher/NEURAL-ARCHITECTURE-SEARCH-CNN",
-    isLiveAvailable: false,
-    category: "ai",
-  },
-  {
-    title: "JADE Grid Game",
-    img: JadeGridGame,
-    technologies: "Java JADE Multi-Agent Systems",
-    details:
-      "A grid-based multi-agent trail race built with the JADE framework. Each agent competes to reach its goal by moving across colored tiles, where each move requires a matching token. Agents can negotiate token trades, strategize cooperation, or betray others to progress. The game ends when a player reaches the goal or when all agents are blocked.",
-    isCodeAvailable: true,
-    isLiveAvailable: false,
-    isPaperAvailable: true,
-    paperLink: "../../../docs/jade_grid_game_paper.pdf",
-    codeLink: "https://github.com/ousscher/JADE-AGENT-GRIDGAME",
-    category: "ai"
-  }, 
-  // {
-  //   title: "CNN HYPERPARAMETER OPTIMIZATION",
-  //   img: null,
-  //   technologies: "Python Meta-heuristics Neighborhood Search",
-  //   details:
-  //     "Research project on CNN hyperparameter optimization using neighborhood-based meta-heuristic algorithms. Published research paper exploring novel approaches to automated neural network tuning. Investigates local search, simulated annealing, and genetic algorithms for architecture optimization.",
-  //   isCodeAvailable: true,
-  //   codeLink: "https://github.com/ousscher/cnn-metaheuristic-optimization",
-  //   isLiveAvailable: false,
-  //   isPaperAvailable: true,
-  //   paperLink: "https://...", // Add your paper link
-  //   category: "ai",
-  // },
-
-  // Mobile Projects
-  {
     title: "OPTIMUM",
     img: Optimum,
     technologies: "Flutter Firebase Hive",
@@ -170,6 +155,56 @@ const projects: Project[] = [
       "https://play.google.com/store/apps/details?id=com.foorweb.foorwebapp&hl=fr",
     category: "mobile",
   },
+  {
+    title: "NEURAL ARCHITECTURE SEARCH",
+    img: null,
+    technologies: "Python TensorFlow NAS MNIST",
+    details:
+      "Modular Neural Architecture Search (NAS) framework for automated CNN design optimization. Uses random search and full training on MNIST to discover optimal network architectures. Explores hyperparameter spaces including layer configurations, activation functions, and optimization strategies.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/ousscher/NEURAL-ARCHITECTURE-SEARCH-CNN",
+    isLiveAvailable: false,
+    category: "ai",
+  },
+  {
+    title: "CHATEAU DES ENFANTS",
+    img: chateauDesEnfants,
+    technologies: "React Tailwind Flask MySQL Docker",
+    details:
+      "Open-source daycare center management platform for local deployment. Streamlines payment processing, tracks children's developmental progress, and provides seamless experience for administrators and parents. Features Dockerized deployment for easy setup.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/F1OOw/Gestion-Paiments-Creche",
+    isLiveAvailable: false,
+    category: "web",
+  },
+  {
+    title: "DOCLIB",
+    img: Doclib,
+    technologies: "Flask MySQL Elasticsearch Docker React Redux",
+    details:
+      "Academic search engine for discovering scientific articles using keyword queries. Implements Elasticsearch for fast full-text search, Redux for state management, and Docker for containerized deployment. Currently in development phase.",
+    isCodeAvailable: true,
+    codeLink: "https://github.com/GLMasters/TP-IGL",
+    isLiveAvailable: false,
+    category: "web",
+  },
+  
+  // {
+  //   title: "CNN HYPERPARAMETER OPTIMIZATION",
+  //   img: null,
+  //   technologies: "Python Meta-heuristics Neighborhood Search",
+  //   details:
+  //     "Research project on CNN hyperparameter optimization using neighborhood-based meta-heuristic algorithms. Published research paper exploring novel approaches to automated neural network tuning. Investigates local search, simulated annealing, and genetic algorithms for architecture optimization.",
+  //   isCodeAvailable: true,
+  //   codeLink: "https://github.com/ousscher/cnn-metaheuristic-optimization",
+  //   isLiveAvailable: false,
+  //   isPaperAvailable: true,
+  //   paperLink: "https://...", // Add your paper link
+  //   category: "ai",
+  // },
+
+  // Mobile Projects
+  
   {
     title: "EVERGREEN",
     img: Evergreen,
@@ -206,40 +241,8 @@ const projects: Project[] = [
   },
 
   // Web Projects
-  {
-    title: "OPTIMUM-WEBSITE",
-    img: optimumWebSite,
-    technologies: "React TailwindCSS Vite.js",
-    details:
-      "Landing page and documentation site for Optimum mobile application. Provides comprehensive information about app features, benefits, organization capabilities, and management tools for healthcare professionals.",
-    isCodeAvailable: true,
-    codeLink: "https://github.com/ousscher/optimum-website",
-    isLiveAvailable: true,
-    liveLink: "https://optimum-app.vercel.app/",
-    category: "web",
-  },
-  {
-    title: "CHATEAU DES ENFANTS",
-    img: chateauDesEnfants,
-    technologies: "React Tailwind Flask MySQL Docker",
-    details:
-      "Open-source daycare center management platform for local deployment. Streamlines payment processing, tracks children's developmental progress, and provides seamless experience for administrators and parents. Features Dockerized deployment for easy setup.",
-    isCodeAvailable: true,
-    codeLink: "https://github.com/F1OOw/Gestion-Paiments-Creche",
-    isLiveAvailable: false,
-    category: "web",
-  },
-  {
-    title: "DOCLIB",
-    img: Doclib,
-    technologies: "Flask MySQL Elasticsearch Docker React Redux",
-    details:
-      "Academic search engine for discovering scientific articles using keyword queries. Implements Elasticsearch for fast full-text search, Redux for state management, and Docker for containerized deployment. Currently in development phase.",
-    isCodeAvailable: true,
-    codeLink: "https://github.com/GLMasters/TP-IGL",
-    isLiveAvailable: false,
-    category: "web",
-  },
+  
+  
   {
     title: "GHACK WEBSITE",
     img: ghack,
@@ -249,6 +252,16 @@ const projects: Project[] = [
     isCodeAvailable: false,
     isLiveAvailable: true,
     liveLink: "https://ghack24.gdgalgiers.com/",
+    category: "web",
+  },
+  {
+    title: "CSEFORUMS",
+    img: CseForums,
+    technologies: "TailwindCSS React.js Express.js",
+    details:
+      "Knowledge-sharing platform created by CSE club for community engagement. Enables members to ask questions, find answers, and explore various technical fields. Features discussion forums, topic categorization, and member profiles. Under active development.",
+    isCodeAvailable: false,
+    isLiveAvailable: false,
     category: "web",
   },
   {
@@ -262,16 +275,7 @@ const projects: Project[] = [
     liveLink: "https://i-btikar-website.vercel.app/",
     category: "web",
   },
-  {
-    title: "CSEFORUMS",
-    img: CseForums,
-    technologies: "TailwindCSS React.js Express.js",
-    details:
-      "Knowledge-sharing platform created by CSE club for community engagement. Enables members to ask questions, find answers, and explore various technical fields. Features discussion forums, topic categorization, and member profiles. Under active development.",
-    isCodeAvailable: false,
-    isLiveAvailable: false,
-    category: "web",
-  },
+  
   {
     title: "MY PORTFOLIO",
     img: MyPortfolio,
@@ -467,9 +471,9 @@ const Projects = () => {
                         href={project.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-[30%] h-10 max-w-[120px]"
+                        className="w-[30%] h-10 max-w-[120px] "
                       >
-                        <button className="bg-blue-600 text-white text-sm sm:text-base px-4 h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
+                        <button className="bg-primary text-white text-sm sm:text-base px-4 h-[100%] w-[100%] rounded hover:scale-105 transition-transform cursor-pointer">
                           Live
                         </button>
                       </a>
@@ -481,7 +485,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="w-[30%] h-10 max-w-[120px]"
                       >
-                        <button className="border-[1px] border-gray-300 text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform">
+                        <button className="border-[1px] border-gray-300 text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform cursor-pointer">
                           Code
                         </button>
                       </a>
@@ -492,7 +496,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="w-[30%] h-10 max-w-[120px]"
                       >
-                        <button className="border-[1px] border-blue-600 bg-blue-50 text-blue-600 text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform flex items-center justify-center gap-1">
+                        <button className="border-[1px] border-blue-600 bg-blue-50 text-blue-600 text-sm sm:text-base h-[100%] w-[100%] rounded hover:scale-105 transition-transform flex items-center justify-center gap-1 cursor-pointer">
                           <FaFileAlt className="text-xs" />
                           Paper
                         </button>

@@ -239,7 +239,7 @@ const Skills = () => {
                   <p className="m-2">Python</p>
                   <p className="m-2">R</p>
                   <p className="m-2">SQL</p>
-                  <p className="m-2">Julia</p>
+                  <p className="m-2">Java</p>
                 </div>
               </div>
             </div>
@@ -263,7 +263,7 @@ const Skills = () => {
                   <p className="m-2">NumPy</p>
                   <p className="m-2">Pandas</p>
                   <p className="m-2">SciPy</p>
-                  <p className="m-2">Statsmodels</p>
+                  <p className="m-2">Arima</p>
                 </div>
               </div>
             </div>
@@ -282,15 +282,16 @@ const Skills = () => {
               </div>
               <div className="border-2 border-border w-[100%] mb-4 bg-card text-card-foreground">
                 <div className="border-b-2 border-border">
-                  <p className="p-2">Big Data</p>
+                  <p className="p-2">Business Intelligence</p>
                 </div>
                 <div className="flex flex-col">
-                  <p className="m-2">Hadoop</p>
-                  <p className="m-2">Spark</p>
-                  <p className="m-2">Kafka</p>
-                  <p className="m-2">Airflow</p>
+                  <p className="m-2">Tableau</p>
+                  <p className="m-2">ETL / Data Warehousing</p>
+                  <p className="m-2">OLAP</p>
+                  <p className="m-2">Dashboards & Reporting</p>
                 </div>
               </div>
+
             </div>
           </div>
           
@@ -315,7 +316,7 @@ const Skills = () => {
                     <p className="m-2">Python</p>
                     <p className="m-2">R</p>
                     <p className="m-2">SQL</p>
-                    <p className="m-2">Julia</p>
+                    <p className="m-2">Java</p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -341,7 +342,7 @@ const Skills = () => {
                     <p className="m-2">NumPy</p>
                     <p className="m-2">Pandas</p>
                     <p className="m-2">SciPy</p>
-                    <p className="m-2">Statsmodels</p>
+                    <p className="m-2">Arima</p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -355,19 +356,21 @@ const Skills = () => {
                     <p className="m-2">Seaborn</p>
                     <p className="m-2">Plotly</p>
                     <p className="m-2">Tableau</p>
+                    <p className="m-2">Power BI</p>
+
                   </div>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="border-2 border-border w-[60%] ml-[20%] mb-10 h-[30vh] text-center md:text-left bg-card text-card-foreground">
                   <div className="border-b-2 border-border h-[20%]">
-                    <p className="p-2">Big Data</p>
+                    <p className="p-2">Business Intelligence</p>
                   </div>
                   <div className="flex flex-col h-[80%] justify-evenly">
-                    <p className="m-2">Hadoop</p>
-                    <p className="m-2">Spark</p>
-                    <p className="m-2">Kafka</p>
-                    <p className="m-2">Airflow</p>
+                    <p className="m-2">Tableau</p>
+                    <p className="m-2">ETL / Data Warehousing</p>
+                    <p className="m-2">OLAP</p>
+                    <p className="m-2">Dashboards & Reporting</p>
                   </div>
                 </div>
               </SwiperSlide>

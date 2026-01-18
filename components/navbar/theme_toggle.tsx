@@ -35,7 +35,7 @@ const ThemeToggle = () => {
       {/* Desktop Version */}
       <button
         onClick={toggleTheme}
-        className="hidden md:flex ml-4 p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-all hover:scale-105"
+        className="hidden md:flex ml-4 p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-all hover:scale-105 cursor-pointer duration-300"
         aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       >
         {darkMode ? (

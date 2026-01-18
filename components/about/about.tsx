@@ -157,7 +157,7 @@ const About = () => {
             className={`px-3 md:px-4 py-2 w-24 md:w-32 rounded-md transition-all duration-300 flex items-center justify-center ${
               currentIndex === 0
                 ? "bg-secondary text-secondary-foreground opacity-70"
-                : "bg-primary text-primary-foreground hover:bg-primary/90"
+                : "bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
             }`}
             disabled={currentIndex === 0 || isAnimating}
             aria-label="Previous slide"
@@ -170,8 +170,8 @@ const About = () => {
             className={`px-3 md:px-4 py-2 w-24 md:w-32 rounded-md transition-all duration-300 flex items-center justify-center ${
               currentIndex === informations.length - 1
                 ? "bg-secondary text-secondary-foreground opacity-70"
-                : "bg-primary text-primary-foreground hover:bg-primary/90"
-            }`}
+                : "bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
+            } cursor-pointer` }
             disabled={currentIndex === informations.length - 1 || isAnimating}
             aria-label="Next slide"
           >
