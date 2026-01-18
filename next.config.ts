@@ -4,7 +4,8 @@ import tsParser from '@typescript-eslint/parser';
 import pluginReact from 'eslint-plugin-react';
 import pluginNext from '@next/eslint-plugin-next';
 
-const config = [
+// eslint-disable-next-line import/no-anonymous-default-export
+export default [
   js.configs.recommended,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
@@ -26,6 +27,4 @@ const config = [
     },
   },
   pluginNext.configs.recommended,
-];
-
-export default config;
+];   
