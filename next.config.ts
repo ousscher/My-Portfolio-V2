@@ -1,9 +1,31 @@
-import type { NextConfig } from "next";
+import js from '@eslint/js';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import pluginReact from 'eslint-plugin-react';
+import pluginNext from '@next/eslint-plugin-next';
 
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+const config = [
+  js.configs.recommended,
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: { jsx: true },
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint,
+      react: pluginReact,
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'error',
+      'react/react-in-jsx-scope': 'off',
+    },
   },
-} satisfies NextConfig;
+  pluginNext.configs.recommended,
+];
 
-export default nextConfig;
+export default config;
