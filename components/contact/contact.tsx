@@ -72,13 +72,13 @@ const Contact: React.FC = () => {
       >
         <div className="flex flex-col gap-10">
           <a 
-            href="mailto:lo_cherguelaine@esi.dz" 
+            href="mailto:oussama.cherguelaine@univ-rouen.fr" 
             target="_blank" 
             rel="noopener noreferrer"
           >
             <div className="flex flex-col hover:cursor-pointer hover:bg-transparent hover:border-primary hover:border items-center py-4 px-8 rounded-[15px] gap-4 bg-primary text-primary-foreground">
               <MdEmail className="text-3xl" />
-              <p className="text-center">lo_cherguelaine@esi.dz</p>
+              <p className="text-center">oussama.cherguelaine@univ-rouen.fr</p>
               <p>Send a message</p>
             </div>
           </a>
